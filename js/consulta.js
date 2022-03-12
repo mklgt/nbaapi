@@ -7,17 +7,26 @@ function crearURL(opcion) {
 const obtenerInfo = (opcion) => {
     switch (opcion) {
         case "games":
-            fetch(crearURL(opcion))
+            fetch('https://www.balldontlie.io/api/v1/games')
+            .then(response => response.json(), {
+                'mode': 'no-cors'
+            })
+            .then(data => console.log(data));
+
+            /*fetch('https://www.balldontlie.io/api/v1/games')
                 .then(response => response.json(), {
                     method: 'GET',
                     mode: 'mo-cors',
                     headers: new Headers({
                         'Access-Control-Allow-Origin': '*',
                         'Access-Control-Allow-Methods': '*',
-                        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+                        'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,**;q=0.8',
+                        'Host':'www.balldontlie.io'
                     })
                 })
-            /*.then(json => {
+            .then(json => {
+                console.log(json)
                 Array.from(json.data).map(resultado => {
                     let jornada = resultados.date.substring(0, 11);
                     let temporada = resultados.season;
