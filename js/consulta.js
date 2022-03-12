@@ -13,7 +13,7 @@ const obtenerInfo = (opcion) => {
                     mode: 'mo-cors',
                     headers: new Headers({
                         'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Methods': 'GET',
+                        'Access-Control-Allow-Methods': '*',
                         'Access-Control-Allow-Headers': 'Content-Type, Authorization'
                     })
                 })
