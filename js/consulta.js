@@ -5,14 +5,11 @@ function crearURL(opcion) {
 }
 
 const obtenerInfo = (opcion) => {
-    let consulta = fetch('https://www.balldontlie.io/api/v1/games');
+    let consulta = fetch(crearURL(opcion));
     switch (opcion) {
         case "games":
-
-
             consulta.then(response => response.json())
                 .then(json => {
-                    console.log(json)
                     Array.from(json.data).map(resultado => {
                         let jornada = resultado.date.substring(0, 11);
                         let temporada = resultado.season;
@@ -26,7 +23,6 @@ const obtenerInfo = (opcion) => {
                         } else {
                             ganador = visitante;
                         }
-                        console.log(resultados.date)
                         tablaResultados.innerHTML += `<tr>
                     <td headers="jornada" scope="row">${jornada}</td>
                     <td headers="temporada">${temporada}</td>
@@ -41,12 +37,37 @@ const obtenerInfo = (opcion) => {
             break;
 
         case "teams":
+            consulta.then(response => response.json())
+                .then(json => {
+                    Array.from(json.data).map(equipo => {
+                        let nombreCompleto = equipo.full_name;
+                        let nombre = equipo.name;
+                        let abreviacion = equipo.abbreviation;
+                        let ciudad = equipo.city;
+                        let conferencia = equipo.conference;
+                        acordeonEquipos.innerHTML += `<div id="acordeon"><div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                    data-target="#equipo${abreviacion}" aria-expanded="false" aria-controls="equipo${abreviacion}">
+                                    <span data-toggle="tooltip" data-placement="right" title="${nombreCompleto}">${nombre}<span></button></h2></div>
+                                    <div id="equipo${abreviacion}" class="collapse" aria-labelledby="headingOne" data-parent="#acordeon">
+                                    <div class="card-body text-left">
+                                        <ul><li>Nombre completo: ${nombreCompleto}</li>
+                                        <li>Abreviación: ${abreviacion}</li><li>Ciudad: ${ciudad}</li>
+                                        <li>Conferencia: ${conferencia}</li></ul></div></div></div>`;
 
+                    })
+
+                })
 
 
             break;
         case "players":
+            consulta.then(response => response.json())
+                .then(json => {
 
+                })
 
 
             break;

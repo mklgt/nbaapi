@@ -8,6 +8,7 @@ let equipos = document.getElementById('equipos');
 let jugadores = document.getElementById('jugadores');
 //DONDE PONER EL CONTENIDO
 let tablaResultados = document.getElementById('tablaResultados');
+let acordeonEquipos = document.getElementById('acordeonEquipos')
 
 import * as metodos from './consulta.js';
 function inicializar(){
@@ -15,6 +16,8 @@ function inicializar(){
         seleccionObjeto(e.target.value);
     });*/
     metodos.obtenerInfo('games')
+    metodos.obtenerInfo('teams')
+    metodos.obtenerInfo('players')
 }
 window.addEventListener('load', function () {
     inicializar();
