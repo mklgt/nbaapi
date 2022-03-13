@@ -7,13 +7,13 @@ function crearURL(opcion) {
 const obtenerInfo = (opcion) => {
     switch (opcion) {
         case "games":
-            fetch('https://www.balldontlie.io/api/v1/games')
+            /*fetch('https://www.balldontlie.io/api/v1/games')
             .then(response => response.json(), {
                 'mode': 'no-cors'
             })
-            .then(data => console.log(data));
+            .then(data => console.log(data));*/
 
-            /*fetch('https://www.balldontlie.io/api/v1/games')
+            fetch('https://www.balldontlie.io/api/v1/games')
                 .then(response => response.json(), {
                     method: 'GET',
                     mode: 'mo-cors',
@@ -50,7 +50,7 @@ const obtenerInfo = (opcion) => {
                     <td headers="resultadoVisitante">${puntuacionVisitante}</td>
                     <td headers="equipoGanador" class="font-weight-bold">${ganador}</td>`;
                 })
-            })*/
+            })
 
             break;
 
