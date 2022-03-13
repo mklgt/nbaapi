@@ -75,7 +75,7 @@ const obtenerInfo = (opcion) => {
                 .then(json => {
                     Array.from(json.data).map(jugador => {
                         if (cont == 0) {
-                            cartasJugador.innerHTML += '<div class="row">';
+                            cartasJugadores.innerHTML += '<div class="row">';
                         }
                         cont++;
                         let nombreCompleto = jugador.first_name + " " + jugador.last_name;
