@@ -28,7 +28,6 @@ const obtenerInfo = (opcion) => {
                         } else {
                             ganador = visitante;
                         }
-                        console.log(resultados.date)
                         tablaResultados.innerHTML += `<tr>
                     <td headers="jornada" scope="row">${jornada}</td>
                     <td headers="temporada">${temporada}</td>
@@ -70,8 +69,61 @@ const obtenerInfo = (opcion) => {
 
             break;
         case "players":
-
-
+            let cont = 0;
+            fetch('https://www.balldontlie.io/api/v1/players')
+                .then(response => response.json())
+                .then(json => {
+                    Array.from(json.data).map(jugador => {
+                        if (cont == 0) {
+                            cartasJugador.innerHTML += '<div class="row">';
+                        }
+                        cont++;
+                        let nombreCompleto = jugador.first_name + " " + jugador.last_name;
+                        let posicion = jugador.position;
+                        let equipo = jugador.team.full_name;
+                        cartasJugadores.innerHTML += `<div class="col-sm-12 col-lg-4">
+                        <div class="card border rounded" data-toggle="modal" data-target="#${nombreCompleto}">
+                            <div class="card-body">
+                                <img src="./img/curry.png" class="card-img-top rounded" style="width: 25%;">
+                                <h5 class="card-title">${nombreCompleto}</h5>
+                            </div>
+                        </div>
+        
+                        <div class="modal fade" id="${nombreCompleto}" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                            aria-labelledby="${nombreCompleto}Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Jugador</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body text-left m-0">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <p>Nombre Apellidos: ${nombreCompleto}</p>
+                                                <p>Posicion: ${posicion}</p>
+                                                <p>Equipo (nombre completo): ${equipo}</p>
+                                            </div>
+                                            <div class="col-6">
+                                                <img src="./img/curry.png" class="border rounded" style="width: 100%;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer mx-auto">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                        if (cont == 3) {
+                            cont = 0;
+                            cartasJugadores.innerHTML += '</div>';
+                        }
+                    })
+                })
 
             break;
     }

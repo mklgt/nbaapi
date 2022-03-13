@@ -9,6 +9,7 @@ let jugadores = document.getElementById('jugadores');
 //DONDE PONER EL CONTENIDO
 let tablaResultados = document.getElementById('tablaResultados');
 let acordeonEquipos = document.getElementById('acordeonEquipos')
+let cartasJugadores = documental.getElementById('jugadores')
 
 import * as metodos from './consulta.js';
 function inicializar(){
@@ -17,7 +18,7 @@ function inicializar(){
     });*/
     metodos.obtenerInfo('games')
     metodos.obtenerInfo('teams')
-    //metodos.obtenerInfo('players')
+    metodos.obtenerInfo('players')
 }
 window.addEventListener('load', function () {
     inicializar();
