@@ -14,7 +14,6 @@ const obtenerInfo = (opcion) => {
                     mode: 'no-cors',
                 })
                 .then(json => {
-                    console.log(json)
                     Array.from(json.data).map(resultado => {
                         let jornada = resultado.date.substring(0, 11);
                         let temporada = resultado.season;
@@ -69,27 +68,32 @@ const obtenerInfo = (opcion) => {
 
             break;
         case "players":
-            let cont = 0;
+
             fetch('https://www.balldontlie.io/api/v1/players')
                 .then(response => response.json())
                 .then(json => {
+                    let html = "";
+                    let cont = 0;
                     Array.from(json.data).map(jugador => {
+                        console.log("Inicio foreach->" + cont)
                         if (cont == 0) {
-                            cartasJugadores.innerHTML += '<div class="row">';
+                            html += '<div class="row">';
                         }
-                        cont++;
+                        cont += 1;
+                        console.log("Antes de hacer todo->" + cont)
+                        let nombre = jugador.first_name;
                         let nombreCompleto = jugador.first_name + " " + jugador.last_name;
                         let posicion = jugador.position;
                         let equipo = jugador.team.full_name;
-                        cartasJugadores.innerHTML += `<div class="col-sm-12 col-lg-4">
-                        <div class="card border rounded" data-toggle="modal" data-target="#${nombreCompleto}">
+                        html += `<div class="col-sm-12 col-lg-4 mb-3">
+                        <div class="card border rounded" data-toggle="modal" data-target="#${nombre}">
                             <div class="card-body">
                                 <img src="./img/curry.png" class="card-img-top rounded" style="width: 25%;">
                                 <h5 class="card-title">${nombreCompleto}</h5>
                             </div>
                         </div>
         
-                        <div class="modal fade" id="${nombreCompleto}" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                        <div class="modal fade" id="${nombre}" data-backdrop="static" data-keyboard="false" tabindex="-1"
                             aria-labelledby="${nombreCompleto}Label" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -118,11 +122,15 @@ const obtenerInfo = (opcion) => {
                             </div>
                         </div>
                     </div>`;
+                        console.log("Antes 2º IF->" + cont)
                         if (cont == 3) {
                             cont = 0;
-                            cartasJugadores.innerHTML += '</div>';
+                            html += '</div>';
                         }
+                        console.log("Fin->" + cont)
+                        
                     })
+                    cartasJugadores.innerHTML+=html;
                 })
 
             break;
