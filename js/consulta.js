@@ -16,8 +16,8 @@ const obtenerInfo = (opcion) => {
                 .then(json => {
                     console.log(json)
                     Array.from(json.data).map(resultado => {
-                        let jornada = resultados.date.substring(0, 11);
-                        let temporada = resultados.season;
+                        let jornada = resultado.date.substring(0, 11);
+                        let temporada = resultado.season;
                         let local = resultado.home_team.name;
                         let visitante = resultado.visitor_team.name;
                         let puntuacionLocal = resultado.home_team_score;
