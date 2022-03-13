@@ -43,7 +43,29 @@ const obtenerInfo = (opcion) => {
             break;
 
         case "teams":
+            fetch('https://www.balldontlie.io/api/v1/teams')
+                .then(response => response.json())
+                .then(json => {
+                    Array.from(json.data).map(equipo => {
+                        let nombreCompleto = equipo.full_name;
+                        let nombre = equipo.name;
+                        let abreviacion = equipo.abbreviation;
+                        let ciudad = equipo.city;
+                        let conferencia = equipo.conference;
+                        acordeonEquipos.innerHTML += `<div id="acordeon"><div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                    data-target="#equipo${abreviacion}" aria-expanded="false" aria-controls="equipo${abreviacion}">
+                                    <span data-toggle="tooltip" data-placement="right" title="${nombreCompleto}">${nombre}<span></button></h2></div>
+                                    <div id="equipo${abreviacion}" class="collapse" aria-labelledby="headingOne" data-parent="#acordeon">
+                                    <div class="card-body text-left">
+                                        <ul><li>Nombre completo: ${nombreCompleto}</li>
+                                        <li>Abreviación: ${abreviacion}</li><li>Ciudad: ${ciudad}</li>
+                                        <li>Conferencia: ${conferencia}</li></ul></div></div></div>`;
 
+                    })
+                })
 
 
             break;
