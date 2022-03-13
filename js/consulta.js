@@ -5,14 +5,18 @@ function crearURL(opcion) {
 }
 
 const obtenerInfo = (opcion) => {
-    let consulta = fetch(crearURL(opcion))
     switch (opcion) {
         case "games":
+            fetch('https://www.balldontlie.io/api/v1/games')
+            .then(response => response.json(), {
+                'mode': 'no-cors'
+            })
+            .then(data => console.log(data));
 
-            
-                consulta.then(response => response.json(), {
+            /*fetch('https://www.balldontlie.io/api/v1/games')
+                .then(response => response.json(), {
                     method: 'GET',
-                    mode: 'no-cors',
+                    mode: 'mo-cors',
                     headers: new Headers({
                         'Access-Control-Allow-Origin': '*',
                         'Access-Control-Allow-Methods': '*',
@@ -24,8 +28,8 @@ const obtenerInfo = (opcion) => {
             .then(json => {
                 console.log(json)
                 Array.from(json.data).map(resultado => {
-                    let jornada = resultado.date.substring(0, 11);
-                    let temporada = resultado.season;
+                    let jornada = resultados.date.substring(0, 11);
+                    let temporada = resultados.season;
                     let local = resultado.home_team.name;
                     let visitante = resultado.visitor_team.name;
                     let puntuacionLocal = resultado.home_team_score;
@@ -46,7 +50,7 @@ const obtenerInfo = (opcion) => {
                     <td headers="resultadoVisitante">${puntuacionVisitante}</td>
                     <td headers="equipoGanador" class="font-weight-bold">${ganador}</td>`;
                 })
-            })
+            })*/
 
             break;
 
