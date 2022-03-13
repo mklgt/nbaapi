@@ -7,7 +7,7 @@ function crearURL(opcion) {
 const obtenerInfo = (opcion) => {
     let consulta = fetch(crearURL(opcion), {
         method: 'GET',
-        mode: 'mo-cors',
+        mode: 'no-cors',
         headers: new Headers({
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': '*',
