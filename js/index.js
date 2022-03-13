@@ -16,7 +16,7 @@ function inicializar(){
         seleccionObjeto(e.target.value);
     });*/
     metodos.obtenerInfo('games')
-    //metodos.obtenerInfo('teams')
+    metodos.obtenerInfo('teams')
     //metodos.obtenerInfo('players')
 }
 window.addEventListener('load', function () {
