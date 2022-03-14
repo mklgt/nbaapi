@@ -27,7 +27,7 @@
 
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                 <h1 class="h2">API NBA</h1> - Mikel Goicoechea
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -37,24 +37,24 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav text-center">
                     <a class="nav-link" href="#"><button id="btnResultados" type="button"
-                            class="btn btn-outline-secondary w-100 w-lg-100">Resultados</button></a>
+                            class="btn btn-secondary w-100 w-lg-100">Resultados</button></a>
                     <a class="nav-link" href="#"><button id="btnEquipos" type="button"
-                            class="btn btn-outline-secondary w-100 w-lg-100">Equipos</button></a>
+                            class="btn btn-secondary w-100 w-lg-100">Equipos</button></a>
                     <a class="nav-link" href="#"><button id="btnJugadores" type="button"
-                            class="btn btn-outline-secondary w-100 w-lg-100">Jugadores</button></a>
+                            class="btn btn-secondary w-100 w-lg-100">Jugadores</button></a>
                 </div>
             </div>
         </nav>
     </header>
     <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
+        <ol id="breadcrumb" class="breadcrumb">
             <li class="breadcrumb-item active" aria-current="page">Página principal</li>
             <!--<li class="breadcrumb-item active" aria-current="page">Library</li>-->
         </ol>
     </nav>
 
     <!--INICIO-->
-    <div class="border rounded pb-5 m-2">
+    <div id="inicio" class="border rounded pb-5 m-2">
         <div id="carouselExampleCaptions" class="carousel slide m-3">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active">1</li>
@@ -84,9 +84,10 @@
                 <span class="sr-only">Next</span>
             </button>
         </div>
+        
     </div>
 
-    <div class="text-center m-4">
+    <div id="dropdown" class="text-center m-4">
         <h2 class="h3">Todas las opciones</h2>
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"

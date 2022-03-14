@@ -75,12 +75,10 @@ const obtenerInfo = (opcion) => {
                     let html = "";
                     let cont = 0;
                     Array.from(json.data).map(jugador => {
-                        console.log("Inicio foreach->" + cont)
                         if (cont == 0) {
                             html += '<div class="row">';
                         }
                         cont += 1;
-                        console.log("Antes de hacer todo->" + cont)
                         let nombre = jugador.first_name;
                         let nombreCompleto = jugador.first_name + " " + jugador.last_name;
                         let posicion = jugador.position;
@@ -122,12 +120,10 @@ const obtenerInfo = (opcion) => {
                             </div>
                         </div>
                     </div>`;
-                        console.log("Antes 2º IF->" + cont)
                         if (cont == 3) {
                             cont = 0;
                             html += '</div>';
                         }
-                        console.log("Fin->" + cont)
                         
                     })
                     cartasJugadores.innerHTML+=html;
