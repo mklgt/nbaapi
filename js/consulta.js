@@ -1,10 +1,11 @@
 const URL_ROOT = "https://balldontlie.io/api/v1/";
+const URL_FOTO = "https://randomuser.me/api/"
 
 function crearURL(opcion) {
     return `${URL_ROOT}${opcion}`;
 }
 
-const obtenerInfo = (opcion) => {
+async function obtenerInfo(opcion) {
     switch (opcion) {
         case "games":
 
@@ -75,6 +76,7 @@ const obtenerInfo = (opcion) => {
                     let html = "";
                     let cont = 0;
                     Array.from(json.data).map(jugador => {
+                        let foto = obtenerFoto();
                         if (cont == 0) {
                             html += '<div class="row">';
                         }
@@ -86,7 +88,7 @@ const obtenerInfo = (opcion) => {
                         html += `<div class="col-sm-12 col-lg-4 mb-3">
                         <div class="card border rounded" data-toggle="modal" data-target="#${nombre}">
                             <div class="card-body">
-                                <img src="./img/curry.png" class="card-img-top rounded" style="width: 25%;">
+                                <img src="${foto}" class="card-img-top rounded" style="width: 25%;">
                                 <h5 class="card-title">${nombreCompleto}</h5>
                             </div>
                         </div>
@@ -109,7 +111,7 @@ const obtenerInfo = (opcion) => {
                                                 <p>Equipo (nombre completo): ${equipo}</p>
                                             </div>
                                             <div class="col-6">
-                                                <img src="./img/curry.png" class="border rounded" style="width: 100%;">
+                                                <img src="${foto}" class="border rounded" style="width: 100%;">
                                             </div>
                                         </div>
                                     </div>
@@ -131,9 +133,21 @@ const obtenerInfo = (opcion) => {
 
             break;
     }
+}
 
-
-
+async function obtenerFoto(){
+    fetch('https://randomuser.me/api/')
+                .then(response => response.json())
+                .then(json => {
+                    Array.from(json.results[0]).map(persona => {
+                        if(persona.gender == "female"){
+                            obtenerFoto();
+                        }else{
+                            let foto = persona.picture.large
+                            return foto
+                        }
+                    })
+                })
 }
 export {
     obtenerInfo

@@ -30,8 +30,22 @@ function inicializar() {
         cambiarBreadcrumb("Jugadores")
         mostrar(jugadores);
     });
-    dropdown.addEventListener('change', function(e){
-        console.log(e);
+    dropdown.addEventListener('click', function (e) {
+        switch (e.target.text) {
+            case "Resultados":
+                cambiarBreadcrumb("Resultados")
+                mostrar(resultados);
+                break;
+
+            case "Equipos":
+                cambiarBreadcrumb("Equipos")
+                mostrar(equipos);
+                break;
+            case "Jugadores":
+                cambiarBreadcrumb("Jugadores")
+                mostrar(jugadores);
+                break;
+        }
     });
     metodos.obtenerInfo('games')
     metodos.obtenerInfo('teams')
