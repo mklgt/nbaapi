@@ -30,6 +30,9 @@ function inicializar() {
         cambiarBreadcrumb("Jugadores")
         mostrar(jugadores);
     });
+    dropdown.addEventListener('change', function(e){
+        console.log(e);
+    });
     metodos.obtenerInfo('games')
     metodos.obtenerInfo('teams')
     metodos.obtenerInfo('players')
