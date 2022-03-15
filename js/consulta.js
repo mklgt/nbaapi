@@ -29,7 +29,7 @@ async function obtenerInfo(opcion) {
             if (opcion == "games") {
                 let resultados = json.data;
                 Array.from(resultados).map(resultado => {
-                    let jornada = resultado.date.substring(0, 11);
+                    let jornada = resultado.date.substring(0, 10);
                     let temporada = resultado.season;
                     let local = resultado.home_team.name;
                     let visitante = resultado.visitor_team.name;
