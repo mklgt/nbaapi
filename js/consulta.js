@@ -20,6 +20,7 @@ async function obtenerFoto() {
 }
 
 async function obtenerInfo(opcion) {
+    
     fetch(crearURL(opcion), {
             "mode": "cors"
         })
@@ -130,6 +131,5 @@ async function obtenerInfo(opcion) {
 }
 
 export {
-    obtenerInfo,
-    obtenerFoto
+    obtenerInfo
 }

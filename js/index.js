@@ -18,7 +18,6 @@ let breadcrumb = document.getElementById('breadcrumb');
 import * as metodos from './consulta.js';
 
 function inicializar() {
-    metodos.obtenerFoto();
     metodos.obtenerInfo('games')
     metodos.obtenerInfo('teams')
     metodos.obtenerInfo('players')
