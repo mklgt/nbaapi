@@ -22,8 +22,15 @@ async function obtenerFoto() {
 
 async function obtenerInfo(opcion) {
     fetch(crearURL(opcion), {
-            "mode": "cors"
-        })
+        method: 'GET',
+        mode: 'cors',
+        headers: new Headers({
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': '*',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,**;q=0.8',
+            'Host':'www.balldontlie.io'
+})
         .then(response => response.json())
         .then(json => {
             if (opcion == "games") {
@@ -63,7 +70,7 @@ async function obtenerInfo(opcion) {
                     <div class="card-header" id="headingOne"><h2 class="mb-0">
                     <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
                     data-target="#equipo${abreviacion}" aria-expanded="false" aria-controls="equipo${abreviacion}">
-                    <span data-toggle="tooltip" data-placement="right" title="${nombreCompleto}">${nombre}<span></button></h2></div>
+                    <span data-toggle="tooltip" data-placement="right" title=" ${nombreCompleto}">${nombre}<span></button></h2></div>
                     <div id="equipo${abreviacion}" class="collapse" aria-labelledby="headingOne" data-parent="#acordeon">
                     <div class="card-body text-left">
                     <ul><li>Nombre completo: ${nombreCompleto}</li>
