@@ -14,13 +14,13 @@ async function obtenerFoto() {
                 obtenerFoto();
             } else {
                 urlFoto = json.results['0'].picture.large
+                obtenerInfo('players');
                 console.log(urlFoto)
             }
         })
 }
 
 async function obtenerInfo(opcion) {
-    
     fetch(crearURL(opcion), {
             "mode": "cors"
         })
@@ -60,20 +60,19 @@ async function obtenerInfo(opcion) {
                     let ciudad = equipo.city;
                     let conferencia = equipo.conference;
                     acordeonEquipos.innerHTML += `<div id="acordeon"><div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
-                                data-target="#equipo${abreviacion}" aria-expanded="false" aria-controls="equipo${abreviacion}">
-                                <span data-toggle="tooltip" data-placement="right" title="${nombreCompleto}">${nombre}<span></button></h2></div>
-                                <div id="equipo${abreviacion}" class="collapse" aria-labelledby="headingOne" data-parent="#acordeon">
-                                <div class="card-body text-left">
-                                    <ul><li>Nombre completo: ${nombreCompleto}</li>
-                                    <li>Abreviación: ${abreviacion}</li><li>Ciudad: ${ciudad}</li>
-                                    <li>Conferencia: ${conferencia}</li></ul></div></div></div>`;
+                    <div class="card-header" id="headingOne"><h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                    data-target="#equipo${abreviacion}" aria-expanded="false" aria-controls="equipo${abreviacion}">
+                    <span data-toggle="tooltip" data-placement="right" title="${nombreCompleto}">${nombre}<span></button></h2></div>
+                    <div id="equipo${abreviacion}" class="collapse" aria-labelledby="headingOne" data-parent="#acordeon">
+                    <div class="card-body text-left">
+                    <ul><li>Nombre completo: ${nombreCompleto}</li>
+                    <li>Abreviación: ${abreviacion}</li><li>Ciudad: ${ciudad}</li>
+                    <li>Conferencia: ${conferencia}</li></ul></div></div></div>`;
 
                 })
                 console.info("Equipos💹")
-            }else if(opcion=="players"){
+            } else if (opcion == "players") {
                 let html = "";
                 let jugadores = json.data;
                 let cont = 0;
@@ -87,49 +86,37 @@ async function obtenerInfo(opcion) {
                     let posicion = jugador.position;
                     let equipo = jugador.team.full_name;
                     html += `<div class="col-sm-12 col-lg-4 mb-3">
-                    <div class="card border rounded" data-toggle="modal" data-target="#${nombre}">
-                        <div class="card-body">
-                            <img src="${urlFoto}" class="card-img-top rounded" style="width: 25%;">
-                            <h5 class="card-title">${nombreCompleto}</h5>
-                        </div>
-                    </div>
-    
+                    <div class="card border rounded" data-toggle="modal" data-target="#${nombre}"><div class="card-body">
+                    <img src="${urlFoto}" class="card-img-top rounded" style="width: 25%;">
+                    <h5 class="card-title">${nombreCompleto}</h5></div></div>
                     <div class="modal fade" id="${nombre}" data-backdrop="static" data-keyboard="false" tabindex="-1"
-                        aria-labelledby="${nombreCompleto}Label" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Jugador</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body text-left m-0">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <p>Nombre Apellidos: ${nombreCompleto}</p>
-                                            <p>Posicion: ${posicion}</p>
-                                            <p>Equipo (nombre completo): ${equipo}</p>
-                                        </div>
-                                        <div class="col-6">
-                                        <img src="${urlFoto}" class="border rounded" style="width: 100%;">
-                                        </div></div></div>
-                                <div class="modal-footer mx-auto">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-                                </div></div></div></div></div>`;
+                    aria-labelledby="${nombreCompleto}Label" aria-hidden="true">
+                    
+                    <div class="modal-dialog"><div class="modal-content">
+                    <div class="modal-header"><h5 class="modal-title" id="exampleModalLabel">Jugador</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button></div>
+                    <div class="modal-body text-left m-0"><div class="row"><div class="col-6">
+                    <p>Nombre Apellidos: ${nombreCompleto}</p>
+                    <p>Posicion: ${posicion}</p>
+                    <p>Equipo (nombre completo): ${equipo}</p></div>
+                    <div class="col-6"><img src="${urlFoto}" class="border rounded" style="width: 100%;">
+                    </div></div></div><div class="modal-footer mx-auto">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div></div></div></div></div>`;
                     if (cont == 3) {
                         cont = 0;
                         html += '</div>';
                     }
-                    
+
                 })
-                cartasJugadores.innerHTML+=html;
+                cartasJugadores.innerHTML += html;
                 console.info("Jugadores💹")
             }
-            
+
         }).catch(err => alert(err))
 }
 
 export {
-    obtenerInfo
+    obtenerInfo, obtenerFoto
 }
