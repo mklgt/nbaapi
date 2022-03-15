@@ -18,6 +18,10 @@ let breadcrumb = document.getElementById('breadcrumb');
 import * as metodos from './consulta.js';
 
 function inicializar() {
+    metodos.obtenerFoto();
+    metodos.obtenerInfo('games')
+    metodos.obtenerInfo('teams')
+    metodos.obtenerInfo('players')
     btnResultados.addEventListener('click', function () {
         cambiarBreadcrumb("Resultados")
         mostrar(resultados);
@@ -47,9 +51,7 @@ function inicializar() {
                 break;
         }
     });
-    metodos.obtenerInfo('games')
-    metodos.obtenerInfo('teams')
-    metodos.obtenerInfo('players')
+    
 }
 
 function cambiarBreadcrumb(opcion) {
