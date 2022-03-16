@@ -23,7 +23,7 @@ async function obtenerFoto() {
 async function obtenerInfo(opcion) {
     fetch(crearURL(opcion), {
             method: 'GET',
-            mode: 'no-cors',
+            mode: 'cors',
             headers: new Headers({
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'GET',
