@@ -23,13 +23,13 @@ async function obtenerFoto() {
 async function obtenerInfo(opcion) {
     fetch(crearURL(opcion), {
             method: 'GET',
-            mode: 'cors',
+            mode: 'no-cors',
             headers: new Headers({
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': '*',
-                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,**;q=0.8',
-                'Host': 'www.balldontlie.io'
+                'Access-Control-Allow-Methods': 'GET',
+                'Host': 'www.balldontlie.io',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             })
         })
         .then(response => response.json())
@@ -122,7 +122,7 @@ async function obtenerInfo(opcion) {
                 console.info("Jugadores💹")
             }
 
-        }).catch(err => alert(err))
+        }).catch(err => console.warn(err))
 }
 
 export {

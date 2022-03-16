@@ -2,7 +2,6 @@
 let btnResultados = document.getElementById('btnResultados');
 let btnEquipos = document.getElementById('btnEquipos');
 let btnJugadores = document.getElementById('btnJugadores');
-let botones = [btnResultados, btnEquipos, btnJugadores];
 //DIVS DE CONTENIDO
 let inicio = document.getElementById('inicio');
 let dropdown = document.getElementById('dropdown')
