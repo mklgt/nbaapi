@@ -55,7 +55,7 @@ async function obtenerInfo(opcion) {
                 <td headers="visitante">${visitante}</td>
                 <td headers="resultadoLocal">${puntuacionLocal}</td>
                 <td headers="resultadoVisitante">${puntuacionVisitante}</td>
-                <td headers="equipoGanador" class="font-weight-bold">${ganador}</td>`;
+                <td headers="equipoGanador" class="font-weight-bold">${ganador}</td></tr>`;
                 })
                 console.info("Resultados💹")
             } else if (opcion == "teams") {
