@@ -1,4 +1,4 @@
-const URL_ROOT = "https://balldontlie.io/api/v1/";
+const URL_ROOT = "https://www.balldontlie.io/api/v1/";
 const URL_FOTO = "https://randomuser.me/api/"
 let urlFoto = "";
 
@@ -23,7 +23,6 @@ async function obtenerFoto() {
 async function obtenerInfo(opcion) {
     fetch(crearURL(opcion), {
             method: 'GET',
-            mode: 'cors',
             headers: new Headers({
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'GET',
